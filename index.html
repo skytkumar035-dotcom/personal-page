@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sandeep Kumawat</title>
         <style>
-            /* predict: desktop = 900px, under 600px = phone */
+            /* predict: desktop = 3 cards in a row, under 600px = 1 card per row */
             * { box-sizing: border-box; }
             body { max-width: 900px; margin: 0 auto; padding: 16px; font-family: sans-serif; }
             .skills { display: grid ; grid-template-columns: repeat(3, 1fr); gap: 12px; }
             .card { background: #eee; padding: 16px; border-radius: 8px; }
-            form { display: flex; flex-direction: column; gap: 8px; }
+            form { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
             @media (max-width: 600px) { .skills { grid-template-columns: 1fr; } }
         </style>
     </head>
@@ -29,5 +29,21 @@
             <textarea name="message" placeholder="Message" required></textarea>
             <button type="submit">Send</button>
         </form>
+        <p id="status"></p>
+        <script>
+            const form = document.querySelector("form");
+            form.addEventListener("submit", (e) => {
+            // If the line below is removed than the page will reload
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(form));
+            // No it will not reload because .preventDefault() blocks it to reload
+            console.log(data);   // { name: "...", email: "...", message: "..." }
+            if (data.message.length < 10) {
+                document.querySelector("#status").textContent = "Message too short";
+                return;
+            }
+            document.querySelector("#status").textContent = "Thanks, " + data.name + "!";
+            });
+        </script>
     </body>
 </html>
