@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sandeep Kumawat</title>
+        <style>
+            /* predict: desktop = 900px, under 600px = phone */
+            * { box-sizing: border-box; }
+            body { max-width: 900px; margin: 0 auto; padding: 16px; font-family: sans-serif; }
+            .skills { display: grid ; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+            .card { background: #eee; padding: 16px; border-radius: 8px; }
+            form { display: flex; flex-direction: column; gap: 8px; }
+            @media (max-width: 600px) { .skills { grid-template-columns: 1fr; } }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Sandeep Kumawat</h1>
+            <p>I aim to be in the top 1%</p>
+        </header>
+        <section class="skills">
+            <div class="card">Python</div>
+            <div class="card">JavaScript</div>
+            <div class="card">TypeScript</div>
+        </section>
+        <form>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </body>
+</html>
